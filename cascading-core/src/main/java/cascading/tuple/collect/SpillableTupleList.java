@@ -25,6 +25,7 @@ import java.io.Closeable;
 import java.io.File;
 import java.io.Flushable;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -404,7 +405,7 @@ public abstract class SpillableTupleList implements Collection<Tuple>, Spillable
     {
     try
       {
-      File file = File.createTempFile( "cascading-spillover", null );
+      File file = Files.createTempFile( "cascading-spillover", null ).toFile();
       file.deleteOnExit();
 
       return file;
